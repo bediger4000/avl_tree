@@ -51,6 +51,14 @@ func AVLInsert(node *Node, value int) (*Node, int) {
 	return node, InsertRight
 }
 
+/* setDepth() calculates the receiver node's
+ * tree depth (leaf == 0) as the max of depths
+ * of child node(s).
+ * Conveniently calculates and returns the "balance factor"
+ * which can trigger a rebalance if it gets > 1 or < -1
+ * Calculation complicated by a missing child having a depth
+ * of -1.
+ */
 func (node *Node) setDepth() int {
 	rDepth := -1
 	node.Depth = 0
