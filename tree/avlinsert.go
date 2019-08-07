@@ -1,7 +1,8 @@
 package tree
 
 const (
-	InsertLeft  = 0
+	InsertNone  = 0
+	InsertLeft  = iota
 	InsertRight = iota
 	InsertLeaf  = iota
 )
@@ -13,6 +14,9 @@ func AVLInsert(node *Node, value int) (*Node, int) {
 	var childInsert int
 	if value < node.Data {
 		node.Left, childInsert = AVLInsert(node.Left, value)
+		if childInsert == InsertNone {
+			return node, InsertNone
+		}
 		if childInsert == InsertLeaf {
 			node.setDepth()
 			return node, InsertLeft
@@ -28,11 +32,15 @@ func AVLInsert(node *Node, value int) (*Node, int) {
 				node.Left = rotateLeft(node.Left)
 				node = rotateRight(node)
 			}
+			return node, InsertNone
 		}
 
 		return node, InsertLeft
 	}
 	node.Right, childInsert = AVLInsert(node.Right, value)
+	if childInsert == InsertNone {
+		return node, InsertNone
+	}
 	if childInsert == InsertLeaf {
 		node.setDepth()
 		return node, InsertRight
@@ -46,6 +54,7 @@ func AVLInsert(node *Node, value int) (*Node, int) {
 		case InsertRight:
 			node = rotateLeft(node)
 		}
+		return node, InsertNone
 	}
 
 	return node, InsertRight
