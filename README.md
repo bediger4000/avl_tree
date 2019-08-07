@@ -34,7 +34,7 @@ the AVL algorithm to insert the integers.
     % dot -Tpng -o avl.png avl.dot
     ... view avl.png
 
-`avltree` uses a list of integers on the command line to create a [GraphViz]()
+`avltree` uses a list of integers on the command line to create a [GraphViz](https://graphviz.org)
 representation of a binary search tree.
 It inserts the integers from the list into a binary tree using the AVL algorithm.
 You can use `dot` (part of GraphViz) to render `avltree` output into PNG, or PostScript
@@ -62,3 +62,14 @@ The balance factor is right depth - left depth.
 Node 3 has 2 child nodes, 1 and 5, both of depth 1,
 so a balance factor of 0 for node 3 is correct.
 
+Compare that tree to a plain Binary Search Tree,
+with insertion done in the same order:
+
+![binary search tree](bst.png?raw=true)
+
+The AVL algorithm clearly does some rearranging as it builds the tree.
+For only 10 nodes and a random insertion order, it's hard to get
+a really lopsided tree result,
+so maybe AVL trees aren't that great for small numbers of sorted items.
+Your task would have to do a lot of lookups on a large number of items
+to make AVL worth the effort.
