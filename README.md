@@ -3,6 +3,9 @@
 Just an exercize to see how hard it is to get AVL
 trees working.
 
+I studied [this class handout](https://courses.cs.washington.edu/courses/cse373/06sp/handouts/lecture12.pdf)
+to understand it all.
+
 # Build it
 
     % go build avltree.go
