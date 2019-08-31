@@ -7,10 +7,11 @@ import (
 )
 
 type Node struct {
-	Data  int
-	Depth int
-	Left  *Node
-	Right *Node
+	Data   int
+	Depth  int
+	Left   *Node
+	Right  *Node
+	Parent *Node
 }
 
 func Inorder(node *Node, out io.Writer) {
@@ -24,9 +25,6 @@ func Inorder(node *Node, out io.Writer) {
 
 // Return true if tree has "Binary seach tree"
 // property, false otherwise.
-// Assumes -1 is smaller than any value, and 9999
-// is greater than any node's value. Just for this
-// program, that labels nodes and edges to see compliance.
 func BSTProperty(root *Node) bool {
 	if !bst(root.Left, int(math.MinInt32), root.Data) {
 		return false
