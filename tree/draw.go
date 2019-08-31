@@ -6,9 +6,9 @@ import (
 )
 
 func Draw(root *Node, out io.Writer) {
-	fmt.Printf("digraph g {\n")
+	fmt.Fprintf(out, "digraph g {\n")
 	preorderDraw(root, out)
-	fmt.Printf("\n}\n")
+	fmt.Fprintf(out, "\n}\n")
 }
 
 // Does a pre-order traverse of tree so as to
