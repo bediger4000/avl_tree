@@ -10,8 +10,18 @@ func Insert(node *Node, value int) *Node {
 	}
 	if value < node.Data {
 		node.Left = Insert(node.Left, value)
+		node.Left.Parent = node
+		d := node.Left.Depth + 1
+		if d > node.Depth {
+			node.Depth = d
+		}
 		return node
 	}
 	node.Right = Insert(node.Right, value)
+	node.Right.Parent = node
+	d := node.Right.Depth + 1
+	if d > node.Depth {
+		node.Depth = d
+	}
 	return node
 }
